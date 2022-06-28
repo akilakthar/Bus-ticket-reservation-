@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus ticket reservation</title>
+</head>
+    <link rel="stylesheet"href="style.css">
+</head>
+
+<body>
+    <div class="header"><img src="logo.jpg" width="125" height="60"alt="">
+        <h1>BLUEBUS TICKET RESERVATION </h1>
+    </div>
+    <div class="full_page">
+    <div class ="navbar">
+    <div>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li><a href="#home" class="menu-btn">Home</a></li>
+            <li><a href="#ticket" class="menu-btn">Ticket bookings</a></li>
+            <li><a href="#cancellation" class="menu-btn">Cancellation</a></li>
+            <li><a href="payment.html" class="menu-btn">Payment</a></li>
+            <li><a href="login.html" class="menu-btn">Login</a></li>
+             </ul>
+        <div class="menu_btn"></div>
+          </nav>
+    </div>
+    <div id='login-form'class='login-page'>
+    <div class="form-box">
+        <div class ='button-box'>
+         <div id='btn'></div>
+    <button type='button'onclick='login()'id="submitted"class='toggle-btn'>Login</button>
+    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
+    </div>
+    <form id='login' class='input-group-login'>
+        <input type='text'class='input-field'id='email'placeholder='Email Id' required >
+        <input type='password'class='input-field'id='password'placeholder='Enter Password' required>
+        <input type='checkbox'class='check-box'><span>Remember Password</span>
+        <button type='submit'class='submit-btn'>Log in</button>
+    </form>
+    <form id='register' class='input-group-register'>
+        <input type='text'class='input-field'placeholder='First Name' required><br><br>
+        <input type='text'class='input-field'placeholder='Last Name ' required><br><br>
+        <input type='email'class='input-field'placeholder='Email Id' required><br><br>
+        <input type='password'class='input-field'placeholder='Enter Password' required><br><br>
+        <input type='password'class='input-field'placeholder='Confirm Password'  required><br><br>
+        <input type='checkbox'class='check-box'><span>I agree to the terms and conditions</span><br>
+        <button type='submit'class='submit-btn'>Register</button>
+        </form>
+       </div>
+   </div>
+</div>
+</script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyBBptsU7NSrmE-giGFrtulB9t--2igHz4s",
+  authDomain: "bus-ticket-reservation-7f9fa.firebaseapp.com",
+  databaseURL: "https://bus-ticket-reservation-7f9fa-default-rtdb.firebaseio.com",
+  projectId: "bus-ticket-reservation-7f9fa",
+  storageBucket: "bus-ticket-reservation-7f9fa.appspot.com",
+  messagingSenderId: "57977828568",
+  appId: "1:57977828568:web:c6a79759f30e2b762d93ad",
+  measurementId: "G-4C8M1H9RSH"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+
+    document.getElementById("submitted").addEventListener("click",function(){
+      const email =document.getElementById("email").value
+      const password=document.getElementById("password").value
+
+            createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+            console.log("created")
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            console.log(errorCode + errorMessage);
+        });
+
+    })
+
+  </script>
+<section class="home" id="home">
+    <div class="max-width">
+        <div class="home-content">
+            <img src="https://i.postimg.cc/mkGxnvzj/tmb-img.png" alt="tmb_img">
+            <p>Our most popular option for large group travel either for local outings or long road trips. Our motor coaches are equipped with restrooms to accommodate your travel needs.Perfect for smaller groups locally traveling for weddings, to sporting events, or even as a shuttle for corporate events between locations</p>
+               </div>
+        </div>
+    </div>
+</section>
+<section class="ticket" id="ticket">
+    <div class="max-width">
+        <div class="ticket-content">
+            <h1>Ticket Bookings</h1><br>
+            <form>
+                 <label for="Place">Choose a place:</label>
+                  <select name="Place" id="Place">
+                   <option value="none">None</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="coimbatore">Coimbatore</option>
+                    <option value="cuddalore"> Cuddalore</option>
+                    <option value="dharmapuri">Dharmapuri</option>
+                    <option value="dindigul">Dindigul</option>
+                    <option value="erode">Erode</option>
+                    <option value="kanchipuram">Kanchipuram</option>
+                    <option value="kanyakumari">Kanyakumari</option>
+                    <option value="karur">Karur</option>
+                    <option value="krishnagiri">Krishnagiri</option>
+                    <option value="kallakurichi">Kallakurichi</option>
+                    <option value="madurai">Madurai</option>
+                    <option value="mayiladuthurai">Mayiladuthurai</option>
+                    <option value="nagapattinam">Nagapattinam</option>
+                    <option value="namakkal">Namakkal</option>
+                    <option value="perambalur">Perambalur</option>
+                    <option value="pudukkottai">Pudukkottai</option>
+                    <option value="ramanathapuram">Ramanathapuram</option>
+                    <option value="salem">Salem</option>
+                    <option value="sivagangai">Sivagangai</option>
+                    <option value="thanjavur">Thanjavur</option>
+                    <option value="nilgiris">Nilgiris</option>
+                    <option value="theni">Theni</option>
+                    <option value="tiruchirapalli">Tiruchirapalli</option>
+                    <option value="tirunelveli">Tirunelveli</option>
+                    <option value="thoothukudi">Thoothukudi</option>
+                    <option value="tiruvallur">Tiruvallur</option>
+                    <option value="tiruvannamalai">Tiruvannamalai</option>
+                    <option value="tiruvarur">Tiruvarur</option>
+                    <option value="vellore">Vellore</option>
+                    <option value="viluppuram">Viluppuram</option>
+                    <option value="virudhunagar">Virudhunagar</option>
+                    <option value="tirupur">Tirupur</option>
+                  </select>
+                  <br><br>
+                  <label for="Destination">Choose a Destination:</label>
+                  <select name="Destination" id="Destination">
+                   <option value="none">None</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="coimbatore">Coimbatore</option>
+                    <option value="cuddalore"> Cuddalore</option>
+                    <option value="dharmapuri">Dharmapuri</option>
+                    <option value="dindigul">Dindigul</option>
+                    <option value="erode">Erode</option>
+                    <option value="kanchipuram">Kanchipuram</option>
+                    <option value="kanyakumari">Kanyakumari</option>
+                    <option value="karur">Karur</option>
+                    <option value="krishnagiri">Krishnagiri</option>
+                    <option value="kallakurichi">Kallakurichi</option>
+                    <option value="madurai">Madurai</option>
+                    <option value="mayiladuthurai">Mayiladuthurai</option>
+                    <option value="nagapattinam">Nagapattinam</option>
+                    <option value="namakkal">Namakkal</option>
+                    <option value="perambalur">Perambalur</option>
+                    <option value="pudukkottai">Pudukkottai</option>
+                    <option value="ramanathapuram">Ramanathapuram</option>
+                    <option value="salem">Salem</option>
+                    <option value="sivagangai">Sivagangai</option>
+                    <option value="thanjavur">Thanjavur</option>
+                    <option value="nilgiris">Nilgiris</option>
+                    <option value="theni">Theni</option>
+                    <option value="tiruchirapalli">Tiruchirapalli</option>
+                    <option value="tirunelveli">Tirunelveli</option>
+                    <option value="thoothukudi">Thoothukudi</option>
+                    <option value="tiruvallur">Tiruvallur</option>
+                    <option value="tiruvannamalai">Tiruvannamalai</option>
+                    <option value="tiruvarur">Tiruvarur</option>
+                    <option value="vellore">Vellore</option>
+                    <option value="viluppuram">Viluppuram</option>
+                    <option value="virudhunagar">Virudhunagar</option>
+                    <option value="tirupur">Tirupur</option>
+                  </select>
+                  <br><br>
+                  <label for="start">Date of journey:</label>
+                  <input type="date" id="start" name="trip-start" value="">
+                  <br><br>
+                  <label for="dateof">Return Date</label>
+                  <input type ="date" id="dateof" name ="trip end"value="">
+                  <br><br>
+                  <center>
+                    <div class="container">
+                        <div class="center">
+                            <button onclick="location.href='booking.html'" type="button">
+                                SUBMIT</button>
+                        </div>
+                      </div>
+                  </center>
+                  
+                
+
+            </form>
+
+        </div>
+</section>
+<section class="cancellation" id="cancellation">
+    <div class="max-width">
+        <div class="cancellation-content">
+            <h1>Ticket Cancellation</h1><br>
+           <form>
+               <label for="cancel">Ticket number: </label>
+               <input type='text'class='input-field' placeholder='Ticket Number'required ><br><br>
+               <label for="email">Email Id: </label>
+               <input type='email'class='input-field'placeholder='Email Id'required><br><br>
+               <button type="button">Cancel Ticket</button>
+           </form>
+
+               </div>
+        </div>
+    </div>
+</section>
+<!-- We Promise To Deliver Container -->
+<center>    
+<div class="we-promise-container bg-light p-3 pb-5">
+    <div class="text-center m-4">
+        <img src="https://i.postimg.cc/QN5hqb9S/promise.png" alt="promise" width="85">
+        <h2 class="text-dark m-2">WE PROMISE TO DELIVER</h2>
+    </div>
+    <div class="text-center d-flex">
+        <div class="row">
+        <div class="border bg-white w-25">
+            <div class="p-4"><img src="https://i.postimg.cc/wMKHptPh/maximum-choices.png" alt="maximum_choices" width="100"></div>
+            <div class="mb-5 m-4 font-weight-light lead">MAXIMUM CHOICE</div>
+            <div class="m-4 p-1 text-muted">We give you the widest number of travel options across thousands of routes.</div>
+        </div>
+
+        <div class="border bg-white w-25">
+            <div class="p-4"><img src="https://i.postimg.cc/Y2mqs7V6/customer-care.png" alt="customer_care" width="91"></div>
+            <div class="mb-5 mt-4 font-weight-light lead">SUPERIOR CUSTOMER SERVICE</div>
+            <div class="m-4 p-1 text-muted">We put our experience and relationships to good use and are available to solve your travel issues.</div>
+        </div>
+
+        <div class="border bg-white w-25">
+            <div class="p-4"><img src="https://i.postimg.cc/JnHmv3Tr/lowest-Fare.png" alt="lowest_Fare" width="120"></div>
+            <div class="mb-5 mt-4 font-weight-light lead">LOWEST PRICES</div>
+            <div class="m-4 p-1 text-muted">We always give you the lowest price with the best partner offers.</div>
+        </div>
+</div>
+</div>
+</center>
+<div class="three-column-footer-contact-form-container">
+    <footer class="three-column-footer-contact-form" data-equalizer data-equalize-by-row="true">
+      <div class="footer-left" data-equalizer-watch>
+        <div class="baseline">
+            <h3>Provide your feedback</h3>
+            <div class="input-group">
+              <input class="input-group-field" type="text" placeholder="Name">
+              <input class="input-group-field" type="email" placeholder="Email address"><br>
+              <textarea placeholder="Message"></textarea>
+            </div>
+            <a class="button expanded" href="#home">Submit</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </footer>
+  </div>
+  
+  <footer>
+    <span class="far fa-copyright"></span> 2021 All rights reserved.</span>
+</footer> 
+<script>
+    var x=document.getElementById('login');
+    var y=document.getElementById('register');
+    var z=document.getElementById('btn');
+    function register()
+    {
+        x.style.left='-400px';s
+        y.style.left='50px';
+        z.style.left='110px';
+    }
+    function login()
+    {
+        x.style.left='50px';
+        y.style.left='450px';
+        z.style.left='0px';
+    }
+</script>
+<script>
+    var modal = document.getElementById('login-form');
+    window.onclick = function(event) 
+    {
+        if (event.target == modal) 
+        {
+            modal.style.display = "none";
+        }
+    }
+    /* font-family: 'Kaushan Script', cursive; */
+/* font-family: 'Pinyon Script', cursive; */
+/* font-family: 'Petit Formal Script', cursive; */
+/* font-family: 'Aguafina Script', cursive; */
+/* font-family: 'Rouge Script', cursive; */
+// font-family: 'Roboto', sans-serif;
+
+</script>
+
+
+</body>
+</html>
